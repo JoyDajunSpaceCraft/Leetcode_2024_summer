@@ -19,3 +19,8 @@ class Solution:
                     dp[i][j] = dp[i - 1][j] or dp[i - 1][j - nums[i - 1]]
 
         return dp[len(nums)][target_sum]
+    
+#     第一个循环遍历所有物品。
+# 第二个循环遍历所有可能的目标和 j。
+# 不选择当前物品：if j < nums[i-1]，如果当前物品 nums[i-1] 重量超过当前目标和 j，则不能选择当前物品，dp[i][j] = dp[i-1][j]。
+# 选择当前物品：else，我们可以选择或者不选择当前物品，dp[i][j] = dp[i-1][j-nums[i-1]] or dp[i-1][j]。这意味着如果前 i-1 个物品可以组成和为 j-nums[i-1] 的子集，或者前 i-1 个物品可以组成和为 j 的子集，那么前 i 个物品就可以组成和为 j 的子集
